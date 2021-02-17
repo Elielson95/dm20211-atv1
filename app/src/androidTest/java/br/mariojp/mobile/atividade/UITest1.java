@@ -24,11 +24,10 @@ import androidx.test.runner.AndroidJUnitRunner;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class UITest {
+public class UITest1 {
 
 
-    private String labelText = "Alo Mundo!";
-
+    private String labelText = "Alô Mundo!";
 
     @Before
     public void launchActivity() {
@@ -37,8 +36,9 @@ public class UITest {
 
     @Test
     public void verificaAloMundo() {
-        //verifica se o texto é Alo Mundo
-        onView(withId(R.id.main_label)).check(matches(withText(labelText)));
+        onView(withId(R.id.main_label_mensagem)).check(matches(withText(labelText)));
+
+
     }
 
 

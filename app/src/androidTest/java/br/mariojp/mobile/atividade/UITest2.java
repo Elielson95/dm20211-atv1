@@ -1,6 +1,8 @@
 package br.mariojp.mobile.atividade;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
@@ -19,8 +21,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 public class UITest2 {
 
 
-    private String labelText = "Alo mundo";
+    private String labelText = "Alô Mundo!";
 
+    private String text = "Enfermeira";
+
+    private String labelText2 = "Olá, Enfermeira!";
 
     @Before
     public void launchActivity() {
@@ -29,9 +34,15 @@ public class UITest2 {
 
     @Test
     public void verificaAloMundo() {
-        //verifica se o texto é Alo Mundo
-        onView(withId(R.id.main_label)).check(matches(withText(labelText)));
+        onView(withId(R.id.main_label_mensagem)).check(matches(withText(labelText)));
 
+        onView(withId(R.id.main_edit_nome)).perform(ViewActions.typeText(text));
+
+        onView(withId(R.id.main_botao)).perform(ViewActions.click());
+
+        onView(withId(R.id.main_label_mensagem)).check(matches(withText(labelText2)));
+
+        onView(withId(R.id.main_edit_nome)).check(matches(withText("")));
 
     }
 
